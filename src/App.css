@@ -182,3 +182,16 @@
     border-right-color: var(--border);
   }
 }
+
+/*
+  Navigation styles
+*/
+
+.Navigation {
+  display: flex;
+  justify-content: flex-start; /* Główne ustawienie: wyrównuje wszystko do lewej */
+  align-items: center;         /* Wyrównuje linki w pionie, żeby były w jednej linii */
+  padding: 20px;               /* Daje trochę przestrzeni od krawędzi ekranu */
+  width: 100%;                 /* Upewnia się, że nawigacja zajmuje całą szerokość */
+  box-sizing: border-box;
+}
