@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import './WelcomePage.css';
 
 function WelcomePage() {
     const navigate = useNavigate();
@@ -15,22 +16,24 @@ function WelcomePage() {
     };
 
     return (
-        <div style={{ padding: '50px', textAlign: 'center' }}>
-            <h1>Hello, let's get to know each other better.</h1>
-            <p>Before you start, tell us a bit about yourself.</p>
+        <div className="welcome-container">
+            <h1 className="welcome-heading">Hello, let's get to know each other better.</h1>
+            <p className="welcome-text">Before you start, tell us a bit about yourself.</p>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="welcome-form">
                 {/* FORMULARZ */}
                 <div>
-                    <label>Name: <input
+                    <label htmlFor="name" className="welcome-label">Name:</label>
+                    <input
+                        id="name"
                         type="text"
                         value={name} // Łączymy input ze zmienna
                         onChange={(e) => setName(e.target.value)} // Aktualizujemy stan przy każdym wciśnięciu klawisza
                         required
-                        style={{ marginLeft: '10px' }} />
-                    </label>
+                        className="welcome-input"
+                    />
                 </div>
-                <button type="submit" style={{ marginTop: '20px' }}>
+                <button type="submit" className="welcome-button">
                     Okay
                 </button>
             </form>
