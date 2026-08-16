@@ -16,14 +16,23 @@ import Home from './pages/Home';
 
 
 function RootLayout() {
+  const userName = localStorage.getItem("userName") || "";
+
   return (
     <>
       {/* Navigation */}
       {/* Renderuje komponenty zdefiniowane w trasach jako dzieci tego layoutu */}
-      < nav className='Navigation' >
-        < Link to="/">Home</Link> | {" "}
-        < Link to="/dashboard" > Dashboard</Link > | {" "}
-        < Link to="/example" > Example</Link >
+      < nav className='Navigation' style={{ display: 'flex', gap: '15px', padding: '10px', borderBottom: '1px solid black' }}>
+        <div>
+          < Link to="/">Home</Link> | {" "}
+          < Link to="/dashboard" > Dashboard</Link > | {" "}
+          < Link to="/example" > Example</Link >
+        </div>
+
+        <div style={{ marginLeft: 'auto', fontWeight: 'bold' }}>
+          Hello, {userName}!
+        </div>
+
       </nav >
       <Outlet />
 
@@ -35,12 +44,12 @@ function RootLayout() {
 // PROCES REJESTRACJI (LocalStorage)
 function RequireRegistration({ children }) {
   const CompletedSetup = localStorage.getItem("CompletedSetup");
-  
+
   if (!CompletedSetup) {
     // Jeśli użytkownik nie ma wpisu w localStorage, przekieruj go na stronę powitalną
     return <Navigate to="/welcome" replace />;
   }
-  
+
   // Użytkownik ma wpis w localStorage
   return children;
 }
@@ -54,9 +63,9 @@ const router = createBrowserRouter(
 
       <Route path="/" element={
         <RequireRegistration>
-        <RootLayout />
-      </RequireRegistration>
-    }>
+          <RootLayout />
+        </RequireRegistration>
+      }>
 
         <Route index element={<Home />} />
         <Route path="dashboard" element={<Dashboard />} />
