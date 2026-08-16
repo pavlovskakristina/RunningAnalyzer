@@ -1,14 +1,16 @@
-import { 
-  createBrowserRouter, 
-  RouterProvider, 
-  createRoutesFromElements, 
-  Route, 
-  Link, 
-  Outlet 
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+  Link,
+  Outlet,
+  Navigate
 } from "react-router-dom";
 
 // import the pages
-import Dashboard from './pages/Dashboard';  
+import WelcomePage from './pages/WelcomePage';
+import Dashboard from './pages/Dashboard';
 import Example from './pages/example';
 import Home from './pages/Home';
 
@@ -23,25 +25,52 @@ function RootLayout() {
         < Link to="/dashboard" > Dashboard</Link > | {" "}
         < Link to="/example" > Example</Link >
       </nav >
-      <Outlet />  
-      
+      <Outlet />
+
     </>
   )
 }
 
-{/* Routes */}
+
+// PROCES REJESTRACJI (LocalStorage)
+function RequireRegistration({ children }) {
+  const CompletedSetup = localStorage.getItem("CompletedSetup");
+  
+  if (!CompletedSetup) {
+    // Jeśli użytkownik nie ma wpisu w localStorage, przekieruj go na stronę powitalną
+    return <Navigate to="/welcome" replace />;
+  }
+  
+  // Użytkownik ma wpis w localStorage
+  return children;
+}
+
+
+// Routes 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home />} />
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="example" element={<Example />} />
-    </Route>
+    <>
+      <Route path="/welcome" element={<WelcomePage />} />
+
+      <Route path="/" element={
+        <RequireRegistration>
+        <RootLayout />
+      </RequireRegistration>
+    }>
+
+        <Route index element={<Home />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="example" element={<Example />} />
+      </Route>
+    </>
   )
 );
 
 function App() {
-    return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router} />
+
+  );
 }
 
 export default App
