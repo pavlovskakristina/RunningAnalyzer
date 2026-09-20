@@ -1,4 +1,4 @@
-# 🏃 Running Analyzer
+# 🏃 Running Analyzer  - in progress
 
 A modern, minimalist web application for tracking running workouts and analyzing your progress. Built with React and styled with CSS, this app helps you monitor your training journey with visualizations and insightful statistics.
 
