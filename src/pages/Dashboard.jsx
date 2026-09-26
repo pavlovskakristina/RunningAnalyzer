@@ -1,6 +1,8 @@
 import { Link, Outlet } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Dashboard.css';
+import { setItem, getItem } from '../utils/localStorage';
+
 
 const Dashboard = () => {
     const [runs, setRuns] = useState([]); // Lista biegów
@@ -10,6 +12,16 @@ const Dashboard = () => {
         avgSpeed: "",
         notes: "",
     });
+
+
+    // Load runs from local storage on component mount
+    useEffect(() => {
+        const storedRuns = getItem('runs');
+
+        if (storedRuns) {
+            setRuns(storedRuns);
+        }
+    }, []);
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -35,14 +47,31 @@ const Dashboard = () => {
             return;
         }
 
-        setRuns([...runs, { ...formData, id: Date.now() }]);
-        setFormData({ date: "", distance: "", avgSpeed: "", notes: "" });
+        const newRun = {
+            ...formData,
+            id: Date.now()
+        };
+
+        const updatedRuns = [...runs, newRun];
+
+        setRuns(updatedRuns);
+        setItem("runs", updatedRuns);
+
+        setFormData({
+            date: "",
+            distance: "",
+            avgSpeed: "",
+            notes: ""
+        });
     };
 
 
     // Delete run function
     function handleDeleteRun(id) {
-        setRuns(runs.filter(run => run.id !== id));
+        const updatedRuns = runs.filter(run => run.id !== id);
+
+        setRuns(updatedRuns);
+        setItem("runs", updatedRuns);
     }
 
     // Counters for total distance and average speed
