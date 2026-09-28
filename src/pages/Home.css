@@ -1,0 +1,306 @@
+.ra {
+    --primary: #ff6b6b;
+    --primary-dark: #c92a2a;
+    --secondary: #4ecdc4;
+    --bg: #ffffff;
+    --bg-soft: #f8f9fa;
+    --text: #2c3e50;
+    --muted: #7f8c8d;
+    --line: #ecf0f1;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.65;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased
+}
+
+.ra * {
+    box-sizing: border-box
+}
+
+.ra a {
+    color: inherit;
+    text-decoration: none
+}
+
+.ra :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px
+}
+
+.ra .wrap {
+    width: 100%;
+    max-width: var(--page-max, 1320px);
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 80px)
+}
+
+/* nav */
+.ra nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0
+}
+
+.ra .links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    font-size: 14px
+}
+
+.ra .links a:not(.btn) {
+    color: var(--muted);
+    transition: color .2s
+}
+
+.ra .links a:not(.btn):hover {
+    color: var(--text)
+}
+
+/* buttons */
+.ra .btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background .2s
+}
+
+.ra .btn:hover {
+    background: var(--primary-dark)
+}
+
+.ra .btn.sm {
+    padding: 8px 16px;
+    font-size: 14px
+}
+
+.ra .btn.ghost {
+    background: transparent;
+    color: var(--text);
+    box-shadow: inset 0 0 0 1px var(--line)
+}
+
+.ra .btn.ghost:hover {
+    background: var(--bg-soft);
+    box-shadow: inset 0 0 0 1px var(--muted)
+}
+
+/* hero */
+.ra .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+    padding-bottom: 112px
+}
+
+.ra .tag {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px
+}
+
+.ra h1 {
+    font-size: clamp(36px, 5.4vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    font-weight: 600;
+    margin: 0 0 20px;
+    max-width: 13ch
+}
+
+.ra .lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 44ch;
+    margin: 0 0 32px
+}
+
+.ra .cta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap
+}
+
+.ra .note {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 16px
+}
+
+/* run card */
+.ra .act {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 520px;
+    justify-self: end
+}
+
+.ra .act h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600
+}
+
+.ra .act small {
+    color: var(--muted);
+    font-size: 13px
+}
+
+.ra .act svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 16px 0 20px
+}
+
+.ra .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    font-variant-numeric: tabular-nums
+}
+
+.ra .stats span {
+    display: block;
+    font-size: 12px;
+    color: var(--muted)
+}
+
+.ra .stats b {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -.01em
+}
+
+.ra .splits {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 56px;
+    margin-top: 24px
+}
+
+.ra .splits div {
+    flex: 1;
+    background: var(--line);
+    border-radius: 3px 3px 0 0
+}
+
+.ra .splits div:nth-child(9) {
+    background: var(--primary)
+}
+
+/* sections */
+.ra section {
+    padding: 0 0 112px
+}
+
+.ra .panel {
+    background: none;
+    padding: 0
+}
+
+.ra h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -.025em;
+    font-weight: 600;
+    margin: 0 0 12px
+}
+
+.ra .sub {
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0 0 48px
+}
+
+.ra .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px
+}
+
+.ra .card {
+    border-top: 1px solid var(--line);
+    padding-top: 20px
+}
+
+.ra .card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 6px
+}
+
+.ra .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .95rem;
+    max-width: 32ch
+}
+
+.ra .card .ic {
+    display: none
+}
+
+.ra .steps .card b {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 10px;
+    font-variant-numeric: tabular-nums
+}
+
+
+/* responsive */
+@media(max-width:860px) {
+    .ra .hero .wrap {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding-bottom: 72px
+    }
+
+    .ra .grid {
+        grid-template-columns: 1fr;
+        gap: 28px
+    }
+
+    .ra .act {
+        max-width: none;
+        justify-self: stretch
+    }
+
+    .ra .links a:not(.btn) {
+        display: none
+    }
+
+    .ra section {
+        padding-bottom: 72px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .ra * {
+        transition: none !important
+    }
+}
+
+/* LOGO  */
+.ra .logo img {
+    display: block;
+    height: 44px;
+    width: auto;
+}
