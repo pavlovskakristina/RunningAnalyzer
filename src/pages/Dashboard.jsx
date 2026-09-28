@@ -132,13 +132,13 @@ const Dashboard = () => {
 
                         {/* NOTES */}
                         <div className="form-group">
-                            <label htmlFor="notes">Notes (how did you feel during the run?) </label>
+                            <label htmlFor="notes">Notes (how did you feel?) </label>
                             <textarea
                                 id="notes"
                                 name="notes"
                                 value={formData.notes}
                                 onChange={handleChange}
-                                placeholder="how did you feel during the run"
+                                placeholder="Write here some notes.."
                             ></textarea>
                         </div>
 
