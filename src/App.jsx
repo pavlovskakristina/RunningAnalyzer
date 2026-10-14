@@ -2,10 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  Route,
-  Link,
-  Outlet,
-  Navigate
+  Route
 } from "react-router-dom";
 
 // import the pages
@@ -13,50 +10,11 @@ import WelcomePage from './pages/WelcomePage';
 import Dashboard from './pages/Dashboard';
 import Example from './pages/example';
 import Home from './pages/Home';
-import Footer from './components/Footer';
+import RootLayout from './components/RootLayout';
+import RequireRegistration from './components/RequireRegistration';
 
 
-function RootLayout() {
-  const userName = localStorage.getItem("userName") || "";
-
-  return (
-    <>
-      {/* Navigation */}
-      {/* Renderuje komponenty zdefiniowane w trasach jako dzieci tego layoutu */}
-      < nav className='Navigation' style={{ display: 'flex', gap: '15px', padding: '10px', borderBottom: '1px solid black' }}>
-        <div>
-          < Link to="/">Home</Link> | {" "}
-          < Link to="/dashboard" > Dashboard</Link > | {" "}
-          < Link to="/example" > Example</Link >
-        </div>
-
-        <div style={{ marginLeft: 'auto', fontWeight: 'bold' }}>
-          Hello, {userName}!
-        </div>
-
-      </nav >
-      <Outlet />
-      <Footer />
-    </>
-  )
-}
-
-
-// PROCES REJESTRACJI (LocalStorage)
-function RequireRegistration({ children }) {
-  const CompletedSetup = localStorage.getItem("CompletedSetup");
-
-  if (!CompletedSetup) {
-    // Jeśli użytkownik nie ma wpisu w localStorage, przekieruj go na stronę powitalną
-    return <Navigate to="/welcome" replace />;
-  }
-
-  // Użytkownik ma wpis w localStorage
-  return children;
-}
-
-
-// Routes 
+// Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -79,7 +37,6 @@ const router = createBrowserRouter(
 function App() {
   return (
     <RouterProvider router={router} />
-
   );
 }
 

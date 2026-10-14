@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './WelcomePage.css';
+import { setItem } from '../utils/localStorage';
 
 function WelcomePage() {
     const navigate = useNavigate();
@@ -9,9 +10,8 @@ function WelcomePage() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("Data saved");
-        localStorage.setItem("userName", name);
-        localStorage.setItem("CompletedSetup", "true"); // Zapisujemy, że setup jest zakończony
+        // Profil użytkownika: imię + informacja, że setup jest zakończony
+        setItem("profile", { userName: name, completedSetup: true });
         navigate("/", { replace: true });  // Przekierowujemy użytkownika na stronę główną
     };
 
