@@ -13,6 +13,7 @@ import WelcomePage from './pages/WelcomePage';
 import Dashboard from './pages/Dashboard';
 import Example from './pages/example';
 import Home from './pages/Home';
+import Footer from './components/Footer';
 
 
 function RootLayout() {
@@ -35,7 +36,7 @@ function RootLayout() {
 
       </nav >
       <Outlet />
-
+      <Footer />
     </>
   )
 }

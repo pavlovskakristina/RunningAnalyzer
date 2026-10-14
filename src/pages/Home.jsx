@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-import Footer from "./Footer.jsx";
 import logo from "../assets/logo.svg";
 
 const features = [
@@ -100,10 +99,6 @@ export default function HomePage() {
                     </div>
                 </div></div>
             </section>
-
-            <div className="wrap">
-                <Footer />
-            </div>
 
         </div>
     );
